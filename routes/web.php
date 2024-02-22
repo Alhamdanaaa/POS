@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+// Route::prefix('admin')->group(function () {
+//     Route::get('/user', [UserController::class, 'index']);
+//     Route::get('/post', [PostController::class, 'index']);
+//     Route::get('/event', [EventController::class, 'index']);
+//     });
+Route::prefix('category')->group(function(){
+    Route::get('/food-beverage',[ProductsController::class, 'foodBeverage']);
+    Route::get('/beauty-health',[ProductsController::class, 'beautyHealth']);
+    Route::get('/home-care',[ProductsController::class, 'homeCare']);
+    Route::get('/baby-kid',[ProductsController::class, 'babyKid']);
 });
